@@ -56,7 +56,7 @@ async function info() {
     console.log(`
     MENU
     ---------------------
-    \t${_list_menu.map((v) => v.arg + "\t[" + v.des + "]\n\t\t: " + v.params.join(" ")).join("\t\n\t")}
+    \t${_list_menu.map((v) => v.arg + "\t[" + v.des + "]\n\t\t@\t" + v.params.join(" ")).join("\t\n\t")}
 
     EXAMPLE
         yarn server ${_list_menu[0].arg}
