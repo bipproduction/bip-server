@@ -53,19 +53,14 @@ if (host === "bip") {
 }
 
 async function info() {
-    // console.log(`
-    // MENU
-    // ---------------------
-    // \t${_list_menu.map((v) => v.arg + "\t\t" + v.des+"\n\t <param> : "+v.params.join(" ")).join("\t\n\t")}
+    console.log(`
+    MENU
+    ---------------------
+    \t${_list_menu.map((v) => v.arg + "\t[" + v.des + "]\n\t\t: " + v.params.join(" ")).join("\t\n\t")}
 
-    // EXAMPLE
-    //     yarn server ${_list_menu[0].arg}
-    // `.yellow)
-    console.table(_list_menu.map((v) => ({
-        arg: v.arg,
-        params: v.params,
-        des: v.des,
-    })))
+    EXAMPLE
+        yarn server ${_list_menu[0].arg}
+    `.yellow)
 }
 
 async function main() {
