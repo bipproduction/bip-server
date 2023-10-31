@@ -2,6 +2,7 @@ const arg = process.argv.splice(2)
 const _ = require('lodash')
 const git_push = require('./src/git_push')
 const get_host_name = require('./lib/get_host_name')
+const git_pull = require('./src/git_pull')
 
 require('colors')
 const host = get_host_name()
@@ -12,7 +13,7 @@ var _list_menu = [
         name: "pull",
         des: "pull",
         arg: "--pull",
-        act: async () => { }
+        act: git_pull
     },
     {
         id: "push",
