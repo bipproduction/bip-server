@@ -4,6 +4,7 @@ const git_push = require('./src/git_push')
 const get_host_name = require('./lib/get_host_name')
 const git_pull = require('./src/git_pull')
 const list_server = require('./src/list_server')
+const create_server = require('./src/create_server')
 require('colors')
 const host = get_host_name()
 
@@ -28,6 +29,13 @@ var _list_menu = [
         des: "melihat list server dan port ",
         arg: "--list-server",
         act: list_server
+    },
+    {
+        id: "create_server",
+        name: "create server",
+        des: "membuat server baru",
+        arg: "--create-server",
+        act: create_server
     }
 ]
 
@@ -55,7 +63,7 @@ async function main() {
     if (_.isEmpty(arg)) return info()
     const cmd = _list_menu.find((v) => v.arg === arg[0])
     if (!cmd) return info()
-    cmd.act()
+    cmd.act(arg.splice(1))
 }
 
 main()
