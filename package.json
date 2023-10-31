@@ -1,0 +1,11 @@
+{
+  "name": "bip-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.5.2",
+    "colors": "^1.4.0",
+    "lodash": "^4.17.21"
+  }
+}
