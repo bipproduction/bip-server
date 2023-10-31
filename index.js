@@ -5,6 +5,7 @@ const get_host_name = require('./lib/get_host_name')
 const git_pull = require('./src/git_pull')
 const list_server = require('./src/list_server')
 const create_server = require('./src/create_server')
+const list_projects = require('./src/list_projects')
 require('colors')
 const host = get_host_name()
 
@@ -32,6 +33,14 @@ var _list_menu = [
         arg: "--list-server",
         params: [],
         act: list_server
+    },
+    {
+        id: "list_project",
+        name: "list project",
+        des: "melihat list project di server",
+        arg: "--list-project",
+        params: [],
+        act: list_projects
     },
     {
         id: "create_server",
