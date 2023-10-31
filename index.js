@@ -14,6 +14,7 @@ var _list_menu = [
         name: "pull",
         des: "pull",
         arg: "--pull",
+        params: [],
         act: git_pull
     },
     {
@@ -21,6 +22,7 @@ var _list_menu = [
         name: "push",
         des: "git push auto",
         arg: "--push",
+        params: [],
         act: git_push
     },
     {
@@ -28,6 +30,7 @@ var _list_menu = [
         name: "list server",
         des: "melihat list server dan port ",
         arg: "--list-server",
+        params: [],
         act: list_server
     },
     {
@@ -35,6 +38,7 @@ var _list_menu = [
         name: "create server",
         des: "membuat server baru",
         arg: "--create-server",
+        params: ["--host", "--name", "--port"],
         act: create_server
     }
 ]
@@ -52,7 +56,7 @@ async function info() {
     console.log(`
     MENU
     ---------------------
-    \t${_list_menu.map((v) => v.arg + "\t" + v.des).join("\t\n\t")}
+    \t${_list_menu.map((v) => v.arg + "\t" + v.des+"\n\tPARAM: "+v.params.join(" ")).join("\t\n\t")}
 
     EXAMPLE
         command ${_list_menu[0].arg}
