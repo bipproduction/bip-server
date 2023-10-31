@@ -3,6 +3,7 @@ const _ = require('lodash')
 const git_push = require('./src/git_push')
 const get_host_name = require('./lib/get_host_name')
 const git_pull = require('./src/git_pull')
+const list_server = require('./src/list_server')
 require('colors')
 const host = get_host_name()
 
@@ -26,7 +27,7 @@ var _list_menu = [
         name: "list server",
         des: "melihat list server dan port ",
         arg: "--list-server",
-        act: git_push
+        act: list_server
     }
 ]
 
