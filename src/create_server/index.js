@@ -10,8 +10,8 @@ module.exports = async function (arg) {
     const a = get_value(arg, ["host", "name", "port"])
     if (!a) return console.log("REQUIRE".yellow, "--host", "--name", "--port")
 
-    const tmp = 
-`server {
+    const tmp =
+        `server {
     server_name ${a.host};
     location / {
         proxy_pass http://localhost:${a.port};
@@ -20,9 +20,9 @@ module.exports = async function (arg) {
 `
 
     // fs.writeFileSync(`/etc/nginx/sites-enabled/${a.name}_${a.port}`, tmp)
-    execSync(`sudo bash -c 'cat <<EOF > x.sh
+    execSync(`sudo bash -c 'cat <<EOF > /etc/nginx/sites-enabled/${a.name}_${a.port}
 ${tmp}
-EOF'`)
+EOF'`, { stdio: "inherit" })
 
     console.log("SUCCESS".green)
 
