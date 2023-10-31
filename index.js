@@ -1,5 +1,6 @@
 const arg = process.argv.splice(2)
 const _ = require('lodash')
+const git_push = require('./src/git_push')
 require('colors')
 
 const list_menu = [
@@ -8,14 +9,14 @@ const list_menu = [
         name: "menu1",
         des: "menu1",
         arg: "--menu1",
-        act: () => { }
+        act: async () => { }
     },
     {
-        id: "menu2",
-        name: "menu2",
-        des: "menu2",
-        arg: "--menu2",
-        act: () => { }
+        id: "push",
+        name: "push",
+        des: "git push auto",
+        arg: "--push",
+        act: git_push
     }
 ]
 
@@ -32,7 +33,9 @@ async function info() {
 
 async function main() {
     if (_.isEmpty(arg)) return info()
-
+    const cmd = list_menu.find((v) => v.arg === arg[0])
+    if (!cmd) return info()
+    await cmd.act()
 }
 
 main()
