@@ -8,4 +8,6 @@ module.exports = async function () {
     git commit -m "auto push"
     git push origin ${branch}
     `, { stdio: "inherit" })
+
+    console.log("SUCCESS".green)
 }
