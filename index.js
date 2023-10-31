@@ -31,8 +31,8 @@ var _list_menu = [
     }
 ]
 
-const _list_exclude_server = ["push", "list_server"]
-const _list_exclude_local = ['pull']
+const _list_exclude_server = ["push"]
+const _list_exclude_local = ['pull', "list_server"]
 
 if (host === "bip") {
     _list_menu = _list_menu.filter((v) => !_list_exclude_server.includes(v.id))
@@ -55,7 +55,7 @@ async function main() {
     if (_.isEmpty(arg)) return info()
     const cmd = _list_menu.find((v) => v.arg === arg[0])
     if (!cmd) return info()
-    await cmd.act()
+    cmd.act()
 }
 
 main()
