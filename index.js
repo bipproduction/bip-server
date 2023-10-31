@@ -1,14 +1,17 @@
 const arg = process.argv.splice(2)
 const _ = require('lodash')
 const git_push = require('./src/git_push')
-require('colors')
+const get_host_name = require('./lib/get_host_name')
 
-const list_menu = [
+require('colors')
+const host = get_host_name()
+
+var _list_menu = [
     {
-        id: "menu1",
-        name: "menu1",
-        des: "menu1",
-        arg: "--menu1",
+        id: "pull",
+        name: "pull",
+        des: "pull",
+        arg: "--pull",
         act: async () => { }
     },
     {
@@ -20,20 +23,29 @@ const list_menu = [
     }
 ]
 
+const _list_exclude_server = ["push"]
+const _list_exclude_local = ['pull']
+
+if (host === "bip") {
+    _list_menu = _list_menu.filter((v) => !_list_exclude_server.includes(v.id))
+} else {
+    _list_menu = _list_menu.filter((v) => !_list_exclude_local.includes(v.id))
+}
+
 async function info() {
     console.log(`
     MENU
     ---------------------
-    \t${list_menu.map((v) => v.arg + "\t" + v.des).join("\t\n\t")}
+    \t${_list_menu.map((v) => v.arg + "\t" + v.des).join("\t\n\t")}
 
     EXAMPLE
-        command ${list_menu[0].arg}
+        command ${_list_menu[0].arg}
     `.yellow)
 }
 
 async function main() {
     if (_.isEmpty(arg)) return info()
-    const cmd = list_menu.find((v) => v.arg === arg[0])
+    const cmd = _list_menu.find((v) => v.arg === arg[0])
     if (!cmd) return info()
     await cmd.act()
 }

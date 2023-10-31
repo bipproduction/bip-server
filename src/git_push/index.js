@@ -1,6 +1,5 @@
-const current_branch = require("../../lib/current_branch")
+const current_branch = require("../../lib/get_current_branch")
 const { execSync } = require('child_process')
-
 
 module.exports = async function () {
     const branch = current_branch()
