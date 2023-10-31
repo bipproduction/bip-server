@@ -31,7 +31,7 @@ var _list_menu = [
     }
 ]
 
-const _list_exclude_server = ["push"]
+const _list_exclude_server = ["push", "list_server"]
 const _list_exclude_local = ['pull']
 
 if (host === "bip") {
